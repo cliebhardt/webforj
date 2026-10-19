@@ -54,7 +54,6 @@
             <configuration>
               <executable>${gradle.executable}</executable>
               <arguments>
-                <argument>clean</argument>
                 <argument>build</argument>
                 <argument>publishToMavenLocal</argument>
                 <argument>--console=plain</argument>
@@ -67,7 +66,7 @@
         </executions>
       </plugin>
 
-      <!-- Copy the Gradle generated JARs to the Maven target directory. -->
+      <!-- Copy the Gradle generated JARs of the current version to the Maven target directory. -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
@@ -84,7 +83,7 @@
                 <resource>
                   <directory>build/libs/</directory>
                   <includes>
-                    <include>**/*.jar</include>
+                    <include>**/*-${project.version}*.jar</include>
                   </includes>
                 </resource>
               </resources>
